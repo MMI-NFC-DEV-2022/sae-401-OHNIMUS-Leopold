@@ -10,5 +10,5 @@
    - HeadlessUI
    - daisyUI
 
-4. Publication sur Netlify à l'url suivante : 
-5. Redirection DNS à l'url suivante : 
+4. Publication sur Netlify à l'url suivante : https://sae-401-ohnimus-leopold.netlify.app/
+5. Redirection DNS à l'url suivante : https://sae401.leopold-ohnimus.fr/
