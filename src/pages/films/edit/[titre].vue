@@ -32,10 +32,12 @@ if (route.params.titre) {
         <!-- <p>{{ film?.site }}</p> -->
         <p>Synopsis du film : {{ film?.synopsis }}</p>
         <iframe width="560" height="315" :src="film?.bande" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p>Afficher la collection : {{ film?.Collection?.nom }}</p>
-        <RouterLink :to="{name: '/collections/edit/[nom]', params: {nom:film?.Collection?.nom}}">
-            <img :src=film?.Collection?.image alt="">
-        </RouterLink>
+        <div v-if="film?.Collection?.nom">
+            <p>Afficher la collection : {{ film?.Collection?.nom }}</p>
+            <RouterLink :to="{name: '/collections/edit/[nom]', params: {nom:film?.Collection?.nom}}">
+                <img :src=film?.Collection?.image alt="">
+            </RouterLink>
+        </div>
         <RouterLink :to="{name: '/genres/edit/[nom]', params: {nom:film?.Genre?.nom}}">
             <p>Genre : {{ film?.Genre?.nom }}</p>
         </RouterLink>
