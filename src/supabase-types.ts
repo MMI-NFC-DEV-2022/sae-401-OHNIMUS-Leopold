@@ -45,6 +45,7 @@ export type Database = {
           bande: string | null
           duree_min: number | null
           id: number
+          idCollection: number | null
           image: string | null
           note: number | null
           realisateur: string | null
@@ -57,6 +58,7 @@ export type Database = {
           bande?: string | null
           duree_min?: number | null
           id?: number
+          idCollection?: number | null
           image?: string | null
           note?: number | null
           realisateur?: string | null
@@ -69,6 +71,7 @@ export type Database = {
           bande?: string | null
           duree_min?: number | null
           id?: number
+          idCollection?: number | null
           image?: string | null
           note?: number | null
           realisateur?: string | null
@@ -76,7 +79,15 @@ export type Database = {
           synopsis?: string | null
           titre?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "public_Film_idCollection_fkey"
+            columns: ["idCollection"]
+            isOneToOne: false
+            referencedRelation: "Collection"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
