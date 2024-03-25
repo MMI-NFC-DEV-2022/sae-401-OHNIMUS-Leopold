@@ -12,7 +12,7 @@ const film = ref<Database['public']['Tables']['Film']['Row'] & { Collection?: Da
 if (route.params.titre) {
     let { data, error } = await supabase
     .from("Film")
-    .select("*, Collection (*)") // Ajoutez une jointure avec la table Collection
+    .select("*, Collection (*)") 
     .eq("titre", route.params.titre);
     if (error) console.log("n'a pas pu charger le table Film :", error);
     else film.value = (data as any[])[0];
