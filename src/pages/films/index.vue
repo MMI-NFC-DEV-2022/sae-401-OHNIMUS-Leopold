@@ -12,7 +12,7 @@ const { data: Films, error } = await supabase
 
 
 <template>
-    <div class="flex">
+    <div class="flex flex-wrap space-x-5">
         <RouterLink v-for="Film in Films" :to="{name: '/films/edit/[titre]', params: {titre:Film.titre}}">
             <FilmCard
             v-bind="Film"

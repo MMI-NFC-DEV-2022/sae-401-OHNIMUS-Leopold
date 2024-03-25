@@ -24,5 +24,7 @@ declare module 'vue-router/auto-routes' {
     '/collections/edit/[nom]': RouteRecordInfo<'/collections/edit/[nom]', '/collections/edit/:nom', { nom: ParamValue<true> }, { nom: ParamValue<false> }>,
     '/films/': RouteRecordInfo<'/films/', '/films', Record<never, never>, Record<never, never>>,
     '/films/edit/[titre]': RouteRecordInfo<'/films/edit/[titre]', '/films/edit/:titre', { titre: ParamValue<true> }, { titre: ParamValue<false> }>,
+    '/genres/': RouteRecordInfo<'/genres/', '/genres', Record<never, never>, Record<never, never>>,
+    '/genres/edit/[nom]': RouteRecordInfo<'/genres/edit/[nom]', '/genres/edit/:nom', { nom: ParamValue<true> }, { nom: ParamValue<false> }>,
   }
 }

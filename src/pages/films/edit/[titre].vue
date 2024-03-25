@@ -7,12 +7,12 @@ import { useRoute } from 'vue-router/auto';
 const route = useRoute("/films/edit/[titre]");
 
 
-const film = ref<Database['public']['Tables']['Film']['Row'] & { Collection?: Database['public']['Tables']['Collection']['Row'] }>();
+const film = ref<Database['public']['Tables']['Film']['Row'] & { Collection?: Database['public']['Tables']['Collection']['Row'], Genre?: Database['public']['Tables']['Genre']['Row'] }>();
 
 if (route.params.titre) {
     let { data, error } = await supabase
     .from("Film")
-    .select("*, Collection (*)") 
+    .select("*, Collection (*), Genre (*)") // Ajoutez une jointure avec la table Genre
     .eq("titre", route.params.titre);
     if (error) console.log("n'a pas pu charger le table Film :", error);
     else film.value = (data as any[])[0];
@@ -35,6 +35,9 @@ if (route.params.titre) {
         <p>Afficher la collection : {{ film?.Collection?.nom }}</p>
         <RouterLink :to="{name: '/collections/edit/[nom]', params: {nom:film?.Collection?.nom}}">
             <img :src=film?.Collection?.image alt="">
+        </RouterLink>
+        <RouterLink :to="{name: '/genres/edit/[nom]', params: {nom:film?.Genre?.nom}}">
+            <p>Genre : {{ film?.Genre?.nom }}</p>
         </RouterLink>
     </div>
 </template>
