@@ -9,6 +9,36 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      Collection: {
+        Row: {
+          duree: number | null
+          id: number
+          image: string | null
+          nom: string | null
+          nombreFilms: number | null
+          note: number | null
+          synopsis: string | null
+        }
+        Insert: {
+          duree?: number | null
+          id?: number
+          image?: string | null
+          nom?: string | null
+          nombreFilms?: number | null
+          note?: number | null
+          synopsis?: string | null
+        }
+        Update: {
+          duree?: number | null
+          id?: number
+          image?: string | null
+          nom?: string | null
+          nombreFilms?: number | null
+          note?: number | null
+          synopsis?: string | null
+        }
+        Relationships: []
+      }
       Film: {
         Row: {
           annee: number | null

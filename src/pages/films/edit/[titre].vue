@@ -24,6 +24,7 @@ if (route.params.titre) {
 
 <template>
     <div>
+        <img :src=film?.image :alt=film?.titre>
         <p>Titre : {{ film?.titre }}</p>
         <p>Année de sortie : {{ film?.annee }}</p>
         <p>Durée : {{ film?.duree_min }}min</p>
