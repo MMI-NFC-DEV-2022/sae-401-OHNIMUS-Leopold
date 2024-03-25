@@ -8,6 +8,7 @@ const route = useRoute("/collections/edit/[nom]");
 
 const collection = ref<Database['public']['Tables']['Collection']['Row']>();
 const films = ref<Database['public']['Tables']['Film']['Row'][]>([]); 
+const genres = ref<Database['public']['Tables']['Genre']['Row'][]>([]);
 
 if (route.params.nom) {
     let { data, error } = await supabase
@@ -24,6 +25,13 @@ if (route.params.nom) {
         .eq("idCollection", collection.value.id);
         if (filmsError) console.log("n'a pas pu charger les films :", filmsError);
         else films.value = filmsData as Database['public']['Tables']['Film']['Row'][];
+
+        let { data: genresData, error: genresError } = await supabase
+        .from("Genre")
+        .select("*")
+        .eq("id", collection.value.idGenre); 
+        if (genresError) console.log("n'a pas pu charger les genres :", genresError);
+        else genres.value = genresData as Database['public']['Tables']['Genre']['Row'][];
     }
 }
 </script>
@@ -44,5 +52,11 @@ if (route.params.nom) {
                 <img :src="film.image" alt="">
             </RouterLink>
         </div>
+        <p>Genre(s) de la collection : </p>
+        <ul class="list-disc ml-5">
+            <RouterLink v-for="genre in genres" :key="genre.id" :to="{name: '/genres/edit/[nom]', params: {nom:genre?.nom}}">
+                <li>{{ genre.nom }}</li>
+            </RouterLink>
+        </ul>
     </div>
 </template>

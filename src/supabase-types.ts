@@ -13,6 +13,7 @@ export type Database = {
         Row: {
           duree: number | null
           id: number
+          idGenre: number | null
           image: string | null
           nom: string | null
           nombreFilms: number | null
@@ -22,6 +23,7 @@ export type Database = {
         Insert: {
           duree?: number | null
           id?: number
+          idGenre?: number | null
           image?: string | null
           nom?: string | null
           nombreFilms?: number | null
@@ -31,13 +33,22 @@ export type Database = {
         Update: {
           duree?: number | null
           id?: number
+          idGenre?: number | null
           image?: string | null
           nom?: string | null
           nombreFilms?: number | null
           note?: number | null
           synopsis?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "public_Collection_idGenre_fkey"
+            columns: ["idGenre"]
+            isOneToOne: false
+            referencedRelation: "Genre"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       Film: {
         Row: {
