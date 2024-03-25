@@ -7,7 +7,7 @@ import { useRoute } from 'vue-router/auto';
 const route = useRoute("/collections/edit/[nom]");
 
 const collection = ref<Database['public']['Tables']['Collection']['Row']>();
-const films = ref<Database['public']['Tables']['Film']['Row'][]>([]); // Ajoutez cette ligne
+const films = ref<Database['public']['Tables']['Film']['Row'][]>([]); 
 
 if (route.params.nom) {
     let { data, error } = await supabase
